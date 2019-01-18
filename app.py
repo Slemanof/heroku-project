@@ -64,9 +64,7 @@ def update_graph(input_value):
             xaxis=dict(
                 title="Date"),
             yaxis=dict(
-                title="Value"),
-            height=800,
-            width=2400
+                title="Value")
         )
         data = [trace]
         fig = go.Figure(data=data, layout=layout)
