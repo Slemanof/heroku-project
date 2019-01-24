@@ -63,7 +63,9 @@ def update_graph(input_value):
             xaxis=dict(
                 title="Date"),
             yaxis=dict(
-                title="Value")
+                title="Value"),
+                height = 1000,
+                width = 1000
         )
         data = [trace]
         fig = go.Figure(data=data, layout=layout)
@@ -98,13 +100,14 @@ def update_graph(input_value):
         title='S&P Volume Heatmap',
         xaxis={'title': 'Year'},
         yaxis={'title': 'Month'},
+        
     ),
         data = [trace]
         fig = dict(data=data, layout=layout),
 
     else:
 
-        trace = go.candlestick(x=data_ica['Date'],
+        trace = go.Candlestick(x=data_ica['Date'],
                             open=data_ica['open'],
                             high=data_ica['high'],
                             low=data_ica['low'],
@@ -115,7 +118,9 @@ def update_graph(input_value):
                 xaxis=dict(
                     title="Date"),
                 yaxis=dict(
-                    title="Value")
+                    title="Value"),
+                    height = 1000,
+                    width = 1000
             )
         data = [trace]
         fig = go.Figure(data=data, layout=layout)
