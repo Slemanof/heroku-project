@@ -58,8 +58,8 @@ def update_graph(input_value):
                         low=data_ica['low'],
                         close=data_ica['close'])
         layout = go.Layout(
-            title='S&P Historical Data',
-            showlegend=True,
+            title='S&P OHLC of the Value',
+            showlegend=False,
             xaxis=dict(
                 title="Date"),
             yaxis=dict(
@@ -76,8 +76,8 @@ def update_graph(input_value):
 
         )
         layout = go.Layout(
-            title='S&P Volume Data',
-            showlegend=True,
+            title='S&P Scatter Volume Data',
+            showlegend=False,
             xaxis=dict(
                 title="Date"),
             yaxis=dict(
@@ -110,8 +110,8 @@ def update_graph(input_value):
                             low=data_ica['low'],
                             close=data_ica['close'])
         layout = go.Layout(
-                title='S&P Historical Data',
-                showlegend=True,
+                title='S&P CandelStick Historical Data',
+                showlegend=False,
                 xaxis=dict(
                     title="Date"),
                 yaxis=dict(
