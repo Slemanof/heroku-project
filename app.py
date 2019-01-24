@@ -35,7 +35,7 @@ The Data and the Graphs shows the historical data of S&P 500 Index which is for 
         dcc.Dropdown(
             id='dropinput',
             options=[
-                {'label': 'S&P Historical Data', 'value': 'candlestick'},
+                {'label': 'S&P Historical Data', 'value': 'ohlc'},
                 {'label': 'S&P Volume Data', 'value': 'scatter'},
                 {'label': 'S&P Volume Heatmap', 'value': 'heatmap'},
 				{'label': 'S&P Historical Data', 'value': 'candlestick'}
@@ -85,38 +85,42 @@ def update_graph(input_value):
         )
         data = [trace1]
         fig = dict(data=data, layout=layout)
-	elif input_value == 'candlestick':
-        trace = go.candlestick(x=data_ica['Date'],
-                        open=data_ica['open'],
-                        high=data_ica['high'],
-                        low=data_ica['low'],
-                        close=data_ica['close'])
+    elif input_value == 'heatmap':
+        trace = go.Heatmap(
+        z=data_ica.volume,
+        x=data_ica.year,
+        y=data_ica.month,
+
+        hoverinfo='x+y+z',
+
+    )
         layout = go.Layout(
-            title='S&P Historical Data',
-            showlegend=True,
-            xaxis=dict(
-                title="Date"),
-            yaxis=dict(
-                title="Value")
-        )
+        title='S&P Volume Heatmap',
+        xaxis={'title': 'Year'},
+        yaxis={'title': 'Month'},
+    ),
+        data = [trace]
+        fig = dict(data=data, layout=layout),
+
+    else:
+
+        trace = go.candlestick(x=data_ica['Date'],
+                            open=data_ica['open'],
+                            high=data_ica['high'],
+                            low=data_ica['low'],
+                            close=data_ica['close'])
+        layout = go.Layout(
+                title='S&P Historical Data',
+                showlegend=True,
+                xaxis=dict(
+                    title="Date"),
+                yaxis=dict(
+                    title="Value")
+            )
         data = [trace]
         fig = go.Figure(data=data, layout=layout)
-    else:
-        trace = go.Heatmap(
-            z=data_ica.volume,
-            x=data_ica.year,
-            y=data_ica.month,
 
-            hoverinfo='x+y+z',
 
-        )
-        layout = go.Layout(
-            title='S&P Volume Heatmap',
-            xaxis={'title': 'Year'},
-            yaxis={'title': 'Month'},
-        )
-        data = [trace]
-        fig = dict(data=data, layout=layout)
     return fig
 
 if __name__ == '__main__':
