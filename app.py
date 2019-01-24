@@ -24,7 +24,7 @@ server.secret_key = os.environ.get('SECRET_KEY', 'my-secret-key')
 
 app.layout = html.Div(children=[
     html.H1(
-        children='S&p 500 Historical Data'
+        children='S&P 500 Historical Data'
     ),
     dcc.Markdown('''
 The Data and the Graphs shows the historical data of S&P 500 Index which is for the American stocks from dates
@@ -35,10 +35,10 @@ The Data and the Graphs shows the historical data of S&P 500 Index which is for 
         dcc.Dropdown(
             id='dropinput',
             options=[
-                {'label': 'S&P Historical Data', 'value': 'ohlc'},
-                {'label': 'S&P Volume Data', 'value': 'scatter'},
+                {'label': 'S&P OHLC of the Value', 'value': 'ohlc'},
+                {'label': 'S&P Scatter Volume Data', 'value': 'scatter'},
                 {'label': 'S&P Volume Heatmap', 'value': 'heatmap'},
-				{'label': 'S&P Historical Data', 'value': 'candlestick'}
+				{'label': 'S&P CandelStick Historical Data', 'value': 'candlestick'}
             ],
             value='heatmap'
     ),
