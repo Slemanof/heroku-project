@@ -27,10 +27,8 @@ app.layout = html.Div(children=[
         children='S&p 500 Historical Data'
     ),
     dcc.Markdown('''
-
 The Data and the Graphs shows the historical data of S&P 500 Index which is for the American stocks from dates
 1/3/2000 to 12/5/2017.
-
     '''
     ),
     html.Div(children=[
@@ -39,7 +37,8 @@ The Data and the Graphs shows the historical data of S&P 500 Index which is for 
             options=[
                 {'label': 'S&P Historical Data', 'value': 'candlestick'},
                 {'label': 'S&P Volume Data', 'value': 'scatter'},
-                {'label': 'S&P Volume Heatmap', 'value': 'heatmap'}
+                {'label': 'S&P Volume Heatmap', 'value': 'heatmap'},
+				{'label': 'S&P Historical Data', 'value': 'candlestick'}
             ],
             value='heatmap'
     ),
@@ -52,7 +51,7 @@ The Data and the Graphs shows the historical data of S&P 500 Index which is for 
     [Input(component_id='dropinput', component_property='value')]
 )
 def update_graph(input_value):
-    if input_value == 'candlestick':
+    if input_value == 'ohlc':
         trace = go.Ohlc(x=data_ica['Date'],
                         open=data_ica['open'],
                         high=data_ica['high'],
@@ -86,6 +85,22 @@ def update_graph(input_value):
         )
         data = [trace1]
         fig = dict(data=data, layout=layout)
+	elif input_value == 'candlestick':
+        trace = go.candlestick(x=data_ica['Date'],
+                        open=data_ica['open'],
+                        high=data_ica['high'],
+                        low=data_ica['low'],
+                        close=data_ica['close'])
+        layout = go.Layout(
+            title='S&P Historical Data',
+            showlegend=True,
+            xaxis=dict(
+                title="Date"),
+            yaxis=dict(
+                title="Value")
+        )
+        data = [trace]
+        fig = go.Figure(data=data, layout=layout)
     else:
         trace = go.Heatmap(
             z=data_ica.volume,
@@ -105,4 +120,4 @@ def update_graph(input_value):
     return fig
 
 if __name__ == '__main__':
-    app.run_server()
+app.run_server()
