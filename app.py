@@ -35,7 +35,9 @@ Dataset could be found here:[Link](https://www.kaggle.com/adityarajuladevi/sp-in
 Project for Programmin Fundamentals done by [*Sulieman Al Rustom*](https://github.com/Slemanof/heroku-project) (Prague College).
 
 Dataset info:
+
 Number of Columns: *7*
+
 Number of Raws: *4511*
     '''
 #Setting up a dropdown list containing the 4 types of charts.
