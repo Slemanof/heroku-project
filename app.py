@@ -27,11 +27,13 @@ app.layout = html.Div(children=[
         children='S&P 500 Historical Data'
     ),
     dcc.Markdown('''
-The Data and the Graphs shows the historical data of S&P 500 Index which is for the American stocks from dates
-1/3/2000 to 12/5/2017.
+
 The Data are Historical data of S&P Index from 2000 to 2017 downloaded from Yahoo Finance API.
+
 Dataset could be found here:[Link](https://www.kaggle.com/adityarajuladevi/sp-index-historical-data)
+
 Project for Programmin Fundamentals done by [*Sulieman Al Rustom*](https://github.com/Slemanof/heroku-project) (Prague College).
+
 Dataset info:
 Number of Columns: *7*
 Number of Raws: *4511*
