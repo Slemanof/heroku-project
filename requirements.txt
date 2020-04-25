@@ -42,7 +42,7 @@ plotly==2.6.0
 prompt-toolkit==1.0.15
 ptyprocess==0.5.2
 Pygments==2.2.0
-python-dateutil==2.7.3
+python-dateutil==3.6.10
 pytz==2018.4
 qtconsole==4.3.1
 requests==2.20.0
